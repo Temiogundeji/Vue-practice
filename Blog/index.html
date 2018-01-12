@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Vuejs Blogging System</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/custom.css">
+	</head>
+	<body>
+		<div class="container-fluid text-center" id="header">
+			<headText :head-text="headText"></headText>
+		</div>
+		<div id="app" class="container">
+			<div class="header clearfix">
+			  <nav>
+			    <ul class="nav nav-pills pull-right">
+			      <li role="presentation">
+			        <a href="#" @click="currentView='manage-posts'">Manage Posts</a>
+			      </li>
+			      <li role="presentation">
+			        <a href="#" @click="currentView='create-posts'">Create Post</a>
+			      </li>
+			    </ul>
+			  </nav>
+			  <h3 class="text-muted">Admin Panel</h3>
+			</div>
+
+			<div class="container">
+			  <!--  render the currently active component/page here -->
+			  <keep-alive>
+			  		<component :is="currentView" transition="fade" transition-mode="out-in"></component>
+			  </keep-alive>
+			</div>
+		</div>	
+		<!-- Component for the manage post -->
+		 <template id="manage-template">
+			  <div>
+			    <h1>Manage Posts</h1>
+			    <div class="list-group">
+			      <a v-for="post in posts" v-bind:post="post" href="#" class="list-group-item clearfix">
+			        <span class="pull-right">
+			          <button class="btn btn-xs btn-info">
+			            <span class="glyphicon glyphicon-edit"></span>
+			          </button>
+			          <button class="btn btn-xs btn-warning">
+			            <span class="glyphicon glyphicon-trash"></span>
+			          </button>
+			        </span>
+			      </a>
+			    </div>
+			  </div>
+		</template>
+
+
+
+
+		 <template id="create-template">
+		<!--Component for the create post-->
+		  <div>
+		    <h1>Create Post</h1>
+		    <form class="form-horizontal">
+		      <div class="form-group">
+		        <label class="col-sm-2 control-label">Post title</label>
+		        <div class="col-sm-10">
+		          <input type="text" class="form-control" placeholder="Post title">
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <label class="col-sm-2 control-label">Post body</label>
+		        <div class="col-sm-10">
+		          <textarea class="form-control" rows="5"></textarea>
+		        </div>
+		      </div>
+		      <div class="form-group">
+		        <div class="col-sm-offset-2 col-sm-10">
+		          <button type="submit" class="btn btn-primary">Create</button>
+		        </div>
+		      </div>
+		    </form>
+		  </div>
+		</template>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- <script src="js/vue-router.js"></script> -->
+	</body>
+</html> 

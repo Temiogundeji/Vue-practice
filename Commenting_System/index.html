@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>iTalent</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/custom.css">
+	</head>
+	<body>
+		<!--This is for posting posts-->
+		<div id="app">
+			<div class="container">
+				<ul class="list-group">
+					<post v-for="post in posts" v-bind:post="post">
+						
+					</post>
+				</ul>
+			</div>
+		</div>
+		<template id="post-template">
+		<li class="list-group-item">
+            <i class="glyphicon glyphicon-chevron-up" v-on:click="upvote"></i>
+            	<span class="label label-primary">{{ votes }}</span>
+            <i class="glyphicon glyphicon-chevron-down" v-on:click="downvote"></i>
+            <a>{{ post.title }}</a>
+        </li>
+		</template>
+
+ 	<div id="commentApp">
+	  <div class="container-fluid">
+
+	        <ul class="list-group">
+	            <post v-for="comment in comments" :post="comment">
+	            </post>
+	        </ul>
+
+	    <div id="comment-box">
+	      <div class="input-group">
+	        <input type="text" class="form-control" placeholder="Enter a comment..." v-model="comment" @keyup.enter="postComment">
+	        <span class="input-group-btn">
+	                    <button class="btn btn-primary" type="button" @click="postComment">Sumbit</button>
+	               </span>
+	      </div>
+	    </div>
+
+	  </div>
+</div>
+
+<!-- <div id="ronalApp">
+	<task-list></task-list>
+</div> -->
+
+<div class="container">
+	<message title="Hello World" body="Lorem Ipsum"></message>
+	<div class="text-center">
+		<h1>Practical Component</h1>
+	</div>
+	<p>
+		Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.Life is but a dream, I love coding.
+	</p>
+	<div id="footer" class="text-center">
+		<h2><i>Designed by Ogundeji Yusuff</i></h2>
+	</div>
+</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-router.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
